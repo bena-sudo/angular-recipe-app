@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IRecipe } from '../../interface/i-recipe';
-import { LISTRECIPES } from './recipes-list.example';
 import { RecipesCardComponent } from '../recipes-card/recipes-card.component';
+import { SupabaseService } from '../../services/supabase.service';
 
 @Component({
   selector: 'app-recipes-list',
@@ -11,7 +11,10 @@ import { RecipesCardComponent } from '../recipes-card/recipes-card.component';
 })
 export class RecipesListComponent implements OnInit {
   public listRecipes: IRecipe[] = [];
+  
+  constructor (private readonly supabaseService: SupabaseService){}
+
   ngOnInit(): void {
-    this.listRecipes = LISTRECIPES;
+    this.listRecipes = this.supabaseService.getRecipes();
   }
 }
