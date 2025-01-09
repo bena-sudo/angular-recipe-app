@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IRecipe } from '../../interface/i-recipe';
+import { IRecipe } from '../../../../core/models/i-recipe';
 import { RouterLink } from '@angular/router';
 
 @Component({

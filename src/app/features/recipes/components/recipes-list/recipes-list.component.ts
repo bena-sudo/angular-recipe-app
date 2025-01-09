@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IRecipe } from '../../interface/i-recipe';
+import { IRecipe } from '../../../../core/models/i-recipe';
 import { RecipesCardComponent } from '../recipes-card/recipes-card.component';
-import { SupabaseService } from '../../services/supabase.service';
+import { SupabaseService } from '../../../../core/services/supabase.service';
 
 @Component({
   selector: 'app-recipes-list',
@@ -11,10 +11,14 @@ import { SupabaseService } from '../../services/supabase.service';
 })
 export class RecipesListComponent implements OnInit {
   public listRecipes: IRecipe[] = [];
-  
-  constructor (private readonly supabaseService: SupabaseService){}
+
+  constructor(private readonly supabaseService: SupabaseService) {}
 
   ngOnInit(): void {
-    this.listRecipes = this.supabaseService.getRecipes();
+    this.supabaseService.getDataObservable('recipe').subscribe({
+      next: (recipes) => (this.listRecipes = recipes),
+      error: (err) => console.error(err),
+      complete: () => console.log('Complete.'),
+    });
   }
 }
