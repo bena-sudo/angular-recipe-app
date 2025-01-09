@@ -1,12 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../../../../core/models/recipe';
 import { RecipeService } from '../../service/recipes.service';
+import { HeaderComponent } from '../../../../shared/components/header/header.component';
+import { FooterComponent } from "../../../../shared/components/footer/footer.component";
 
 @Component({
   selector: 'app-recipe-detail',
-  imports: [],
+  imports: [HeaderComponent, FooterComponent],
   templateUrl: './recipe-detail.component.html',
-  styleUrl: './recipe-detail.component.css'
+  styleUrl: './recipe-detail.component.css',
 })
 export class RecipeDetailComponent {
   @Input('id') recipeID!: string;
