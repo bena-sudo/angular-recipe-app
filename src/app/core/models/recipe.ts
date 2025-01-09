@@ -1,4 +1,4 @@
-export interface IRecipe {
+export interface Recipe {
     idMeal:                      null | string;
     strMeal:                     null | string;
     strDrinkAlternate:           null | string;

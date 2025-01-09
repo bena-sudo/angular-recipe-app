@@ -16,6 +16,10 @@ export class SupabaseService {
     );
   }
 
+  get client() {
+    return this.supabase;
+  }
+
   async getData(tabla: string) {
     const { data, error } = await this.supabase.from(tabla).select('*');
     if (error) {

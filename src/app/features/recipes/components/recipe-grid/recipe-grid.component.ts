@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IRecipe } from '../../../../core/models/i-recipe';
+import { Recipe } from '../../../../core/models/recipe';
 import { SupabaseService } from '../../../../core/services/supabase.service';
 import { RecipeCardComponent } from "../recipe-card/recipe-card.component";
 
@@ -10,7 +10,7 @@ import { RecipeCardComponent } from "../recipe-card/recipe-card.component";
   styleUrl: './recipe-grid.component.css'
 })
 export class RecipeGridComponent {
-  public recipes: IRecipe[] = [];
+  public recipes: Recipe[] = [];
 
   constructor(private readonly supabaseService: SupabaseService) {}
 

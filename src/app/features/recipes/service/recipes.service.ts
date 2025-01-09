@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { SupabaseService } from '../../../core/services/supabase.service';
-import { Product } from '../../../core/models/product.model';
+import { Recipe } from '../../../core/models/recipe';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
-  private readonly table: string = 'product';
+export class RecipeService {
+  private readonly table: string = 'recipe';
 
   constructor(private readonly supabase: SupabaseService) {}
 
-  async getProducts(): Promise<Product[]> {
+  async getRecipes(): Promise<Recipe[]> {
     const { data, error } = await this.supabase.client
       .from(this.table)
       .select('*');
@@ -22,11 +22,11 @@ export class ProductService {
     return data || [];
   }
 
-  async getProductById(id: string): Promise<Product | null> {
+  async getRecipeById(id: string): Promise<Recipe | null> {
     const { data, error } = await this.supabase.client
       .from(this.table)
       .select('*')
-      .eq('id', id)
+      .eq('idMeal', id)
       .single();
 
     if (error) {
@@ -36,44 +36,48 @@ export class ProductService {
     return data;
   }
 
-  async createProduct(product: Product): Promise<Product[] | null> {
+  async createRecipe(recipe: Recipe): Promise<Recipe | null> {
     const { data, error } = await this.supabase.client
       .from(this.table)
-      .insert([product]);
+      .insert([recipe])
+      .select()
+      .single();
 
     if (error) {
       throw new Error(error.message);
     }
 
-    return data ?? null;
+    return data;
   }
 
-  async updateProduct(
+  async updateRecipe(
     id: string,
-    updates: Partial<Product>
-  ): Promise<Product[] | null> {
+    updates: Partial<Recipe>
+  ): Promise<Recipe | null> {
     const { data, error } = await this.supabase.client
       .from(this.table)
       .update(updates)
-      .eq('id', id);
+      .eq('idMeal', id)
+      .select()
+      .single();
 
     if (error) {
       throw new Error(error.message);
     }
 
-    return data ?? null;
+    return data;
   }
 
-  async deleteProduct(id: string): Promise<Product[] | null> {
-    const { data, error } = await this.supabase.client
+  async deleteRecipe(id: string): Promise<boolean> {
+    const { error } = await this.supabase.client
       .from(this.table)
       .delete()
-      .eq('id', id);
+      .eq('idMeal', id);
 
     if (error) {
       throw new Error(error.message);
     }
 
-    return data ?? null;
+    return true;
   }
 }
