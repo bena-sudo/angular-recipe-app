@@ -1,43 +1,43 @@
-<div class="d-flex align-items-center py-4 bg-body-tertiary">
-  <main class="form-signin w-100 m-auto">
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+  <div class="card p-4 shadow" style="width: 100%; max-width: 400px">
     <form>
-      <img
-        class="mb-4"
-        src="/docs/5.3/assets/brand/bootstrap-logo.svg"
-        alt=""
-        width="72"
-        height="57" />
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-      <div class="form-floating">
+      <div class="text-center mb-4">
+        <img
+          src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+          alt="Logo"
+          width="72"
+          height="57"
+          class="mb-2" />
+        <h1 class="h5 mb-3 fw-bold">Please sign in</h1>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
         <input
           type="email"
           class="form-control"
-          id="floatingInput"
-          placeholder="name@example.com" />
-        <label for="floatingInput">Email address</label>
+          id="email"
+          placeholder="name@example.com"
+          required />
       </div>
-      <div class="form-floating">
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
         <input
           type="password"
           class="form-control"
-          id="floatingPassword"
-          placeholder="Password" />
-        <label for="floatingPassword">Password</label>
+          id="password"
+          placeholder="Enter your password"
+          required />
       </div>
-
-      <div class="form-check text-start my-3">
+      <div class="form-check mb-3">
         <input
           class="form-check-input"
           type="checkbox"
-          value="remember-me"
-          id="flexCheckDefault" />
-        <label class="form-check-label" for="flexCheckDefault">
-          Remember me
-        </label>
+          value=""
+          id="rememberMe" />
+        <label class="form-check-label" for="rememberMe"> Remember me </label>
       </div>
-      <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
-      <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
+      <button type="submit" class="btn btn-primary w-100">Sign in</button>
+      <p class="mt-4 mb-0 text-center text-muted">© 2025 Company, Inc</p>
     </form>
-  </main>
+  </div>
 </div>
