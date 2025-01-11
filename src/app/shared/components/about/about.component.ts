@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from "../footer/footer.component";
-import { HeaderComponent } from "../header/header.component";
+import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-about',
@@ -11,7 +11,8 @@ import { HeaderComponent } from "../header/header.component";
 export class AboutComponent {
   language: 'en' | 'es' = 'es';
 
-  setLanguage(lang: string) {
-    this.language = (lang === 'en' || lang === 'es') ? lang : 'es';
+  setLanguage(event: Event) {
+    const lang = (event.target as HTMLSelectElement).value;
+    this.language = lang === 'en' || lang === 'es' ? lang : 'es';
   }
 }
