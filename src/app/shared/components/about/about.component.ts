@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
+import { FooterComponent } from "../footer/footer.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [FooterComponent, HeaderComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css',
 })
 export class AboutComponent {
-  language: 'en' | 'es' = 'en';
+  language: 'en' | 'es' = 'es';
 
-  setLanguage(lang: 'en' | 'es') {
-    this.language = lang;
+  setLanguage(lang: string) {
+    this.language = (lang === 'en' || lang === 'es') ? lang : 'es';
   }
 }
