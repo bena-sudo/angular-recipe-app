@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="language-switcher">
+    <button (click)="setLanguage('en')">English</button>
+    <button (click)="setLanguage('es')">Español</button>
+  </div>
+
+  @if (language === 'en') {
+  <div class="content">
+    <h1>About Me</h1>
+    <p>
+      Hello! My name is [Your Name], and I am a passionate software developer.
+    </p>
+    <p>This project was created by me to showcase my skills and experience.</p>
+    <p>
+      You can find more about my work on my
+      <a href="https://github.com/[YourGitHub]" target="_blank">GitHub</a>.
+    </p>
+  </div>
+  } @else {
+  <div class="content">
+    <h1>Sobre Mí</h1>
+    <p>
+      ¡Hola! Mi nombre es [Tu Nombre], y soy un desarrollador de software
+      apasionado.
+    </p>
+    <p>
+      Este proyecto fue creado por mí para mostrar mis habilidades y
+      experiencia.
+    </p>
+    <p>
+      Puedes encontrar más sobre mi trabajo en mi
+      <a href="https://github.com/[YourGitHub]" target="_blank">GitHub</a>.
+    </p>
+  </div>
+  }
+</div>
