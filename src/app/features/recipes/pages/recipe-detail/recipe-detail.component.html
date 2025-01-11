@@ -19,8 +19,8 @@
           <a href="#">bena-sudo</a>
         </p>
 
-        @for (paragraph  of getInstructionParagraphs(); track $index) {
-          <p>{{ paragraph || "No instructions available." }}</p>
+        @for (paragraph of getInstructionParagraphs(); track $index) {
+        <p>{{ paragraph || "No instructions available." }}</p>
         }
 
         <h3 class="mb-3">Ingredients</h3>

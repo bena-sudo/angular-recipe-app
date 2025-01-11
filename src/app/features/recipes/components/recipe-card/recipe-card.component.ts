@@ -6,7 +6,7 @@ import { RouterLink } from '@angular/router';
   selector: 'app-recipe-card',
   imports: [RouterLink],
   templateUrl: './recipe-card.component.html',
-  styleUrl: './recipe-card.component.css'
+  styleUrl: './recipe-card.component.css',
 })
 export class RecipeCardComponent {
   @Input({ required: true }) recipe?: Recipe;

@@ -5,9 +5,9 @@ import { LoginComponent } from './features/auth/pages/login/login.component';
 import { RecipeDetailComponent } from './features/recipes/pages/recipe-detail/recipe-detail.component';
 
 export const routes: Routes = [
-    {path: 'home', component: RecipeHomeComponent},
-    {path: 'main', component: RecipeMainComponent},
-    {path: 'recipe/:id', component: RecipeDetailComponent},
-    {path: 'login', component: LoginComponent},
-    {path: '**', pathMatch: 'full', redirectTo: 'home'}
+  { path: 'home', component: RecipeHomeComponent },
+  { path: 'main', component: RecipeMainComponent },
+  { path: 'recipe/:id', component: RecipeDetailComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

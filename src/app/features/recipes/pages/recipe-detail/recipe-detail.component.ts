@@ -42,11 +42,11 @@ export class RecipeDetailComponent {
     }
     return ingredients;
   }
-  
+
   getInstructionParagraphs(): string[] {
     if (!this.recipe?.strInstructions) return [];
-    return this.recipe.strInstructions.split(/(?:\n)+/).filter(instruction => instruction.trim());
+    return this.recipe.strInstructions
+      .split(/(?:\n)+/)
+      .filter((instruction) => instruction.trim());
   }
-  
-
 }
