@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-about-main',
+  selector: 'app-about',
   imports: [],
-  templateUrl: './about-main.component.html',
-  styleUrl: './about-main.component.css'
+  templateUrl: './about.component.html',
+  styleUrl: './about.component.css',
 })
-export class AboutMainComponent {
+export class AboutComponent {
   language: 'en' | 'es' = 'en';
 
   setLanguage(lang: 'en' | 'es') {
