@@ -3,7 +3,7 @@ import { RecipeHomeComponent } from './features/recipes/pages/recipe-home/recipe
 import { RecipeMainComponent } from './features/recipes/pages/recipe-main/recipe-main.component';
 import { LoginComponent } from './features/auth/pages/login/login.component';
 import { RecipeDetailComponent } from './features/recipes/pages/recipe-detail/recipe-detail.component';
-import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { AboutComponent } from './shared/components/about/about.component';
 
 export const routes: Routes = [
