@@ -6,6 +6,7 @@ import { RecipeDetailComponent } from './features/recipes/pages/recipe-detail/re
 import { AboutComponent } from './shared/components/about/about.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { RecipeCreateComponent } from './features/recipes/pages/recipe-create/recipe-create.component';
+import { RecipeEditComponent } from './features/recipes/pages/recipe-edit/recipe-edit.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ export const routes: Routes = [
   { path: 'main', component: RecipeMainComponent },
   { path: 'recipe/:id', component: RecipeDetailComponent },
   { path: 'create', component: RecipeCreateComponent },
+  { path: 'edit/:id', component: RecipeEditComponent },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: '**', component: NotFoundComponent },
