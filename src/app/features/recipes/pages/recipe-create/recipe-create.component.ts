@@ -8,8 +8,8 @@ import {
 import { Router } from '@angular/router';
 import { Recipe } from '../../../../core/models/recipe';
 import { RecipeService } from '../../service/recipes.service';
-import { FooterComponent } from "../../../../shared/components/footer/footer.component";
-import { HeaderComponent } from "../../../../shared/components/header/header.component";
+import { FooterComponent } from '../../../../shared/components/footer/footer.component';
+import { HeaderComponent } from '../../../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-recipe-create',
@@ -74,8 +74,8 @@ export class RecipeCreateComponent {
     dateModified: null,
     strStorageimg: null,
     idCategory: null,
-    idIngredients: []
-  }
+    idIngredients: [],
+  };
   recipeForm: FormGroup;
 
   constructor(
@@ -94,7 +94,7 @@ export class RecipeCreateComponent {
     if (this.recipeForm.invalid) {
       return;
     }
-  
+
     const newRecipe: Recipe = this.recipeForm.value;
     console.log(this.recipe);
 
