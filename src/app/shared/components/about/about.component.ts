@@ -9,7 +9,7 @@ import { HeaderComponent } from '../header/header.component';
   styleUrl: './about.component.css',
 })
 export class AboutComponent {
-  language: 'en' | 'es' = 'es';
+  language: 'en' | 'es' = 'en';
 
   setLanguage(event: Event) {
     const lang = (event.target as HTMLSelectElement).value;
