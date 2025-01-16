@@ -5,9 +5,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-singup',
   imports: [CommonModule,FormsModule,HeaderLoginComponent, FooterLoginComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './singup.component.html',
+  styleUrl: './singup.component.css'
 })
-export class LoginComponent {}
+export class SingupComponent {
+
+}
