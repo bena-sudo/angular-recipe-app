@@ -1,0 +1,3 @@
+#!/bin/sh
+npx prettier . --write        # Formatea los archivos.
+git add .                     # Añade los archivos modificados por Prettier.

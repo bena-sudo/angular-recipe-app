@@ -6,10 +6,13 @@ import { HeaderLoginComponent } from '../../components/header-login/header-login
 
 @Component({
   selector: 'app-singin',
-  imports: [CommonModule,FormsModule,HeaderLoginComponent, FooterLoginComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    HeaderLoginComponent,
+    FooterLoginComponent,
+  ],
   templateUrl: './singin.component.html',
-  styleUrl: './singin.component.css'
+  styleUrl: './singin.component.css',
 })
-export class SinginComponent {
-
-}
+export class SinginComponent {}

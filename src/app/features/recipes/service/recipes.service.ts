@@ -52,7 +52,7 @@ export class RecipeService {
 
   async updateRecipe(
     id: string,
-    updates: Partial<Recipe>
+    updates: Partial<Recipe>,
   ): Promise<Recipe | null> {
     const { data, error } = await this.supabase.client
       .from(this.table)

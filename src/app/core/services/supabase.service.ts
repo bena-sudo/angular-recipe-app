@@ -21,7 +21,7 @@ export class SupabaseService {
   constructor() {
     this.supabase = createClient(
       environment.supabaseUrl,
-      environment.supabaseKey
+      environment.supabaseKey,
     );
   }
 
@@ -45,7 +45,7 @@ export class SupabaseService {
   }
 
   authChanges(
-    callback: (event: AuthChangeEvent, session: Session | null) => void
+    callback: (event: AuthChangeEvent, session: Session | null) => void,
   ) {
     return this.supabase.auth.onAuthStateChange(callback);
   }

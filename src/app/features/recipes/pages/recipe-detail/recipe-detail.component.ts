@@ -19,10 +19,10 @@ export class RecipeDetailComponent {
   constructor(private readonly recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.getRecipeDetail(this.recipeID);
+    this.getRecipeDetail();
   }
 
-  private async getRecipeDetail(id: string): Promise<void> {
+  private async getRecipeDetail(): Promise<void> {
     try {
       this.recipe = await this.recipeService.getRecipeById(this.recipeID);
     } catch (error) {

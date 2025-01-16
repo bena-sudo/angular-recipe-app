@@ -24,7 +24,7 @@
           [(ngModel)]="email"
           [ngClass]="{
             'is-valid': email.touched && email.valid && !email.pristine,
-            'is-invalid': email.touched && email.invalid
+            'is-invalid': email.touched && email.invalid,
           }"
           required
         />
@@ -40,8 +40,9 @@
           #password="ngModel"
           [(ngModel)]="password"
           [ngClass]="{
-            'is-valid': password.touched && password.valid && !password.pristine,
-            'is-invalid': password.touched && password.invalid
+            'is-valid':
+              password.touched && password.valid && !password.pristine,
+            'is-invalid': password.touched && password.invalid,
           }"
           required
         />

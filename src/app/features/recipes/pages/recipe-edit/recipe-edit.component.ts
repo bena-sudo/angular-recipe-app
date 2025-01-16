@@ -26,7 +26,7 @@ export class RecipeEditComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly recipeService: RecipeService,
-    private readonly router: Router
+    private readonly router: Router,
   ) {
     this.recipeForm = this.fb.group({
       strMeal: ['', [Validators.required]],

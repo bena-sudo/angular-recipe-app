@@ -2,7 +2,6 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
 
-
 ## 🎯 Project Objective
 
 The **Angular Recipe App** is a web application designed to manage a personal recipe library. It allows users to perform CRUD (Create, Read, Update, Delete) operations on their recipes. Users can add new recipes, view details, edit existing ones, and delete recipes they no longer need. The app aims to simplify recipe management in a user-friendly and visually appealing interface.
@@ -11,24 +10,27 @@ The **Angular Recipe App** is a web application designed to manage a personal re
 
 ## 🛠️ Technologies Used
 
-- **Frontend Framework:** Angular  
-- **Programming Languages:** TypeScript, HTML5, CSS3  
+- **Frontend Framework:** Angular
+- **Programming Languages:** TypeScript, HTML5, CSS3
 - **Styling Framework:** Bootstrap
 - **Backend:** Supabase (Database and Authentication)
-- **Development Tools:** Node.js, Visual Studio Code  
-- **Version Control:** Git  
+- **Development Tools:** Node.js, Visual Studio Code
+- **Version Control:** Git
 
 ---
 
 ## 📸 Screenshots
 
 ### Home Page
+
 ![Home Page](path/to/screenshot-home.png)
 
 ### Recipe List
+
 ![Recipe List](path/to/screenshot-recipe-list.png)
 
 ### Add Recipe
+
 ![Add Recipe](path/to/screenshot-add-recipe.png)
 
 ---
@@ -37,13 +39,13 @@ The **Angular Recipe App** is a web application designed to manage a personal re
 
 Follow these steps to clone, set up, and run the project locally:
 
-1. **Clone the repository**  
+1. **Clone the repository**
    ```bash
    git clone https://github.com/bena-sudo/angular-recipe-app.git
    cd angular-recipe-app
    ```
 2. **Install dependencies**
-   Ensure you have Node.js installed on your system. Then, install the project dependencies using:  
+   Ensure you have Node.js installed on your system. Then, install the project dependencies using:
    ```bash
    npm install
    ```
