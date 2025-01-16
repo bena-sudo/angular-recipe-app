@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import {
-  AuthChangeEvent,
   AuthSession,
   createClient,
-  Session,
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { from, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -33,12 +31,6 @@ export class SupabaseService {
       this._session = data.session;
     });
     return this._session;
-  }
-
-  authChanges(
-    callback: (event: AuthChangeEvent, session: Session | null) => void,
-  ) {
-    return this.supabase.auth.onAuthStateChange(callback);
   }
 
   signIn(email: string, password: string) {
@@ -69,6 +61,16 @@ export class SupabaseService {
 
   downLoadImage(path: string) {
     return this.supabase.storage.from('avatars').download(path);
+  }
+
+  loggedSubject = new BehaviorSubject(false);
+  async isLogged() {
+    const {
+      data: { user },
+    } = await this.supabase.auth.getUser();
+    if (user) {
+      this.loggedSubject.next(true);
+    } else this.loggedSubject.next(false);
   }
 
   // MIRAR
