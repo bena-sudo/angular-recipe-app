@@ -2,6 +2,7 @@
   <div class="container d-flex flex-wrap">
     <ul class="nav me-auto">
       <li class="nav-item">
+        <!-- Links to the home page -->
         <a
           [routerLink]="['/home']"
           routerLinkActive="['active']"
@@ -12,6 +13,7 @@
         </a>
       </li>
       <li class="nav-item">
+        <!-- Links to the recipes page -->
         <a
           [routerLink]="['/main']"
           routerLinkActive="['active']"
@@ -22,24 +24,28 @@
         </a>
       </li>
       <li class="nav-item">
+        <!-- Links to the about page -->
         <a
           [routerLink]="['/about']"
           routerLinkActive="['active']"
           class="nav-link link-dark px-2"
-          >About</a
         >
+          About
+        </a>
       </li>
     </ul>
     <ul class="nav">
       <li class="nav-item">
-        <a [routerLink]="['/singin']" class="nav-link link-dark px-2"
-          >Sing in</a
-        >
+        <!-- Links to the sign-in page -->
+        <a [routerLink]="['/singin']" class="nav-link link-dark px-2">
+          Sign in
+        </a>
       </li>
       <li class="nav-item">
-        <a [routerLink]="['/singup']" class="nav-link link-dark px-2"
-          >Sign up</a
-        >
+        <!-- Links to the sign-up page -->
+        <a [routerLink]="['/singup']" class="nav-link link-dark px-2">
+          Sign up
+        </a>
       </li>
     </ul>
   </div>
@@ -47,6 +53,7 @@
 
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
+    <!-- Links to the homepage -->
     <a
       href="/"
       class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
@@ -59,6 +66,7 @@
         height="32"
       />
       <span class="fs-4">Double header</span>
+      <!-- Header title -->
     </a>
     <form class="col-12 col-lg-auto mb-3 mb-lg-0">
       <input
