@@ -1,7 +1,7 @@
-<app-header-login></app-header-login>
+<app-header-auth></app-header-auth>
 <div class="d-flex align-items-center justify-content-center mt-5 bg-light">
   <div class="card p-4 shadow" style="width: 100%; max-width: 400px">
-    <form>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="text-center mb-4">
         <img
           src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -18,16 +18,16 @@
           id="email"
           name="email"
           type="email"
+          formControlName="email"
           class="form-control"
           placeholder="name@example.com"
-          #email="ngModel"
-          [(ngModel)]="email"
-          [ngClass]="{
-            'is-valid': email.touched && email.valid && !email.pristine,
-            'is-invalid': email.touched && email.invalid,
-          }"
-          required
+          aria-describedby="emailHelp"
         />
+        @if (
+          signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched
+        ) {
+          <div class="alert alert-danger">Incorrect format.</div>
+        }
       </div>
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
@@ -35,30 +35,51 @@
           id="password"
           name="password"
           type="password"
+          formControlName="password"
           class="form-control"
           placeholder="Enter your password"
-          #password="ngModel"
-          [(ngModel)]="password"
-          [ngClass]="{
-            'is-valid':
-              password.touched && password.valid && !password.pristine,
-            'is-invalid': password.touched && password.invalid,
-          }"
-          required
         />
       </div>
-      <div class="form-check mb-3">
+      @if (
+        signUpForm.get('password')?.invalid &&
+        signUpForm.get('password')?.touched
+      ) {
+        <div class="alert alert-danger">Incorrect format.</div>
+      }
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm password</label>
         <input
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="rememberMe"
+          id="confirmPassword"
+          name="confirmPassword"
+          type="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Confirm your password"
         />
-        <label class="form-check-label" for="rememberMe"> Remember me </label>
       </div>
-      <button type="submit" class="btn btn-primary w-100">Sign up</button>
+      @if (
+        signUpForm.hasError('mismatch') &&
+        signUpForm.get('confirmPassword')?.touched
+      ) {
+        <div class="alert alert-danger">Passwords do not match.</div>
+      }
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="isLoading || signUpForm.invalid"
+      >
+        {{ isLoading ? 'Loading...' : 'Sign in' }}
+      </button>
+      @if (errorMessage) {
+        <div class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+      }
+
       <p class="mt-4 mb-0 text-center text-muted">© 2025 Company, Inc</p>
     </form>
   </div>
 </div>
-<app-footer-login></app-footer-login>
+<app-footer-auth></app-footer-auth>
