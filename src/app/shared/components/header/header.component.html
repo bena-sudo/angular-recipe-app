@@ -1,6 +1,7 @@
 <nav class="py-2 bg-light border-bottom">
   <div class="container d-flex flex-wrap">
     <ul class="nav me-auto">
+      <!-- Navigation link: Home -->
       <li class="nav-item">
         <a
           [routerLink]="['/home']"
@@ -11,6 +12,7 @@
           Home
         </a>
       </li>
+      <!-- Navigation link: Recipes -->
       <li class="nav-item">
         <a
           [routerLink]="['/main']"
@@ -21,6 +23,7 @@
           Recipes
         </a>
       </li>
+      <!-- Navigation link: About -->
       <li class="nav-item">
         <a
           [routerLink]="['/about']"
@@ -31,11 +34,13 @@
       </li>
     </ul>
     <ul class="nav">
+      <!-- Navigation link: Sign in -->
       <li class="nav-item">
         <a [routerLink]="['/singin']" class="nav-link link-dark px-2"
-          >Sing in</a
+          >Sign in</a
         >
       </li>
+      <!-- Navigation link: Sign up -->
       <li class="nav-item">
         <a [routerLink]="['/singup']" class="nav-link link-dark px-2"
           >Sign up</a
@@ -47,6 +52,7 @@
 
 <header class="py-3 mb-4 border-bottom">
   <div class="container d-flex flex-wrap justify-content-center">
+    <!-- Logo and title -->
     <a
       href="/"
       class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none"
@@ -60,6 +66,7 @@
       />
       <span class="fs-4">Double header</span>
     </a>
+    <!-- Search form -->
     <form class="col-12 col-lg-auto mb-3 mb-lg-0">
       <input
         type="search"

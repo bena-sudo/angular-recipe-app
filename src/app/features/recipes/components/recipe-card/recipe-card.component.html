@@ -1,14 +1,17 @@
 <div class="card shadow-sm position-relative">
   <div class="position-relative">
+    <!-- Display the recipe image or a fallback if the image is not available -->
     <img
       src="{{ recipe ? recipe.strMealThumb : 'NO IMAGE' }}"
       class="bd-placeholder-img card-img-top"
       alt="{{ recipe ? recipe.strMeal : 'NO NAME' }}"
     />
+    <!-- Overlay with semi-transparent background -->
     <div
       class="position-absolute top-0 start-0 w-100 h-100 bg-dark"
       style="opacity: 0.5"
     ></div>
+    <!-- Recipe name displayed in the center of the overlay -->
     <div
       class="position-absolute top-50 start-50 text-white translate-middle fs-5 fw-bold"
     >
@@ -16,17 +19,20 @@
     </div>
   </div>
   <div class="card-body">
+    <!-- Display the recipe category or fallback if not available -->
     <p class="card-text">
       {{ recipe ? recipe.strCategory : 'NO CATEGORY' }}
     </p>
     <div class="d-flex justify-content-between align-items-center">
       <div class="btn-group">
+        <!-- Link to view the recipe details -->
         <a
           [routerLink]="['/recipe', recipe?.idMeal]"
           class="btn btn-sm btn-outline-secondary"
         >
           View
         </a>
+        <!-- Link to edit the recipe -->
         <a
           [routerLink]="['/edit', recipe?.idMeal]"
           class="btn btn-sm btn-outline-secondary"
@@ -34,9 +40,10 @@
           Edit
         </a>
       </div>
-      <small class="text-body-secondary">{{
-        recipe ? recipe.dateModified : 'NO DATE'
-      }}</small>
+      <!-- Display the date the recipe was modified or a fallback -->
+      <small class="text-body-secondary">
+        {{ recipe ? recipe.dateModified : 'NO DATE' }}
+      </small>
     </div>
   </div>
 </div>

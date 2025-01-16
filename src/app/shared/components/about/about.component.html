@@ -1,7 +1,11 @@
 <app-header></app-header>
+<!-- Header component for consistent navigation -->
+
 <div class="container mt-4">
   <div class="row align-items-center">
+    <!-- Profile image section -->
     <div class="col-md-4 text-center px-5">
+      <!-- Profile image with rounded shape and shadow -->
       <img
         src="https://avatars.githubusercontent.com/u/91416378?v=4"
         alt="Profile"
@@ -10,13 +14,17 @@
     </div>
 
     <div class="col-md-8">
+      <!-- Language selection dropdown -->
       <div class="d-flex justify-content-end mb-3">
         <select class="form-select w-auto" (change)="setLanguage($event)">
           <option value="en" [selected]="language === 'en'">English</option>
+          <!-- English option -->
           <option value="es" [selected]="language === 'es'">Español</option>
+          <!-- Spanish option -->
         </select>
       </div>
 
+      <!-- Conditional content display based on selected language -->
       @if (language === 'en') {
         <div class="content" style="text-align: justify">
           <h2>About Me</h2>
@@ -67,6 +75,8 @@
           </ul>
         </div>
       }
+
+      <!-- Content in Spanish if the selected language is 'es' -->
       @if (language === 'es') {
         <div class="content" style="text-align: justify">
           <h2>Sobre Mí</h2>
@@ -122,4 +132,6 @@
     </div>
   </div>
 </div>
+
 <app-footer></app-footer>
+<!-- Footer component -->

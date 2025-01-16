@@ -9,7 +9,7 @@ import {
 } from '@supabase/supabase-js';
 import { from, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { Profile } from '../models/prrofile';
+import { Profile } from '../models/profile';
 
 @Injectable({
   providedIn: 'root',
