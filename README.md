@@ -21,17 +21,17 @@ The **Angular Recipe App** is a web application designed to manage a personal re
 
 ## 📸 Screenshots
 
-### Home Page
-
-![Home Page](path/to/screenshot-home.png)
-
 ### Recipe List
 
-![Recipe List](path/to/screenshot-recipe-list.png)
+![Recipe List](/public/screenshot/screenshot-main.png)
 
 ### Add Recipe
 
-![Add Recipe](path/to/screenshot-add-recipe.png)
+![Add Recipe](/public/screenshot/screenshot-create.png)
+
+### Edit Page
+
+![Home Page](/public/screenshot/screenshot-edit.png)
 
 ---
 
