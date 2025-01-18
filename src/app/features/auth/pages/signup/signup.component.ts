@@ -1,28 +1,28 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import {
-  FormBuilder,
-  FormGroup,
   ReactiveFormsModule,
+  FormGroup,
+  FormBuilder,
   Validators,
 } from '@angular/forms';
-import { HeaderAuthComponent } from '../../components/header-auth/header-auth.component';
-import { FooterAuthComponent } from '../../components/footer-auth/footer-auth.component';
-import { SupabaseService } from '../../../../core/services/supabase.service';
 import { Router } from '@angular/router';
+import { SupabaseService } from '../../../../core/services/supabase.service';
+import { FooterAuthComponent } from '../../components/footer-auth/footer-auth.component';
+import { HeaderAuthComponent } from '../../components/header-auth/header-auth.component';
 
 @Component({
-  selector: 'app-singup',
+  selector: 'app-signup',
   imports: [
     ReactiveFormsModule,
     CommonModule,
     HeaderAuthComponent,
     FooterAuthComponent,
   ],
-  templateUrl: './singup.component.html',
-  styleUrl: './singup.component.css',
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css',
 })
-export class SingupComponent {
+export class SignupComponent {
   signUpForm!: FormGroup;
   isLoading = false;
   errorMessage: string | null = null;
