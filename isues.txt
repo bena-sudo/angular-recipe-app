@@ -2,3 +2,4 @@ Cambiar cadigo del Detail par que use Observables
 Mirar els formularis de Create y Edit
 Implementar el buscador de receptes
 Mirar si esta implementat el codig de comprobar si esta loggeat per implementar la nova funcio de log out
+El header: eliminar el header duplicat i separar el subheader del header per a poder elegir si se mostra
