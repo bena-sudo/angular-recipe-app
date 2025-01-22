@@ -1,6 +1,6 @@
 <app-header></app-header>
-<app-sub-header></app-sub-header>
+<app-sub-header (searchTerm)="onSearch($event)"></app-sub-header>
 <div class="container">
-  <app-recipe-grid></app-recipe-grid>
+  <app-recipe-grid [recipes]="recipes"></app-recipe-grid>
 </div>
 <app-footer></app-footer>

@@ -91,4 +91,21 @@ export class RecipeService {
       catchError((error) => throwError(() => error)),
     );
   }
+
+  searchRecipes(query: string): Observable<Recipe[]> {
+    return from(
+      this.supabase.client
+        .from(this.table)
+        .select('*')
+        .ilike('strMeal', `%${query}%`),
+    ).pipe(
+      map((response) => {
+        if (response.error) {
+          throw new Error(response.error.message);
+        }
+        return response.data || [];
+      }),
+      catchError((error) => throwError(() => error)),
+    );
+  }
 }
