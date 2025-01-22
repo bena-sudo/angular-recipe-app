@@ -23,4 +23,13 @@ export class HeaderComponent {
     );
     this.supabaseService.isLogged();
   }
+
+  async onLogout(): Promise<void> {
+    try {
+      await this.supabaseService.signOut();
+      window.location.reload();
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  }
 }
