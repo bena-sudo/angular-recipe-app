@@ -9,15 +9,15 @@ import {
 import { Router } from '@angular/router';
 import { SupabaseService } from '../../../../core/services/supabase.service';
 import { FooterAuthComponent } from '../../components/footer-auth/footer-auth.component';
-import { HeaderAuthComponent } from '../../components/header-auth/header-auth.component';
+import { HeaderComponent } from '../../../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-signin',
   imports: [
     ReactiveFormsModule,
     CommonModule,
-    HeaderAuthComponent,
     FooterAuthComponent,
+    HeaderComponent,
   ],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css',
