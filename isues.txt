@@ -1,0 +1,3 @@
+Cambiar cadigo del Detail par que use Observables
+Mirar els formularis de Create y Edit
+Implementar el buscador de receptes
