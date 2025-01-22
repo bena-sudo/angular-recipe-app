@@ -5,7 +5,7 @@ import {
   SupabaseClient,
   User,
 } from '@supabase/supabase-js';
-import { BehaviorSubject, from, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -71,18 +71,5 @@ export class SupabaseService {
     if (user) {
       this.loggedSubject.next(true);
     } else this.loggedSubject.next(false);
-  }
-
-  // MIRAR
-  async getData(tabla: string) {
-    const { data, error } = await this.supabase.from(tabla).select('*');
-    if (error) {
-      console.error('Error fetching data: ', error);
-    }
-    return data;
-  }
-
-  getDataObservable(table: string): Observable<any> {
-    return from(this.getData(table));
   }
 }

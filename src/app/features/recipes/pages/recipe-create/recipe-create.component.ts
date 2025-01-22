@@ -10,6 +10,8 @@ import { Recipe } from '../../../../core/models/recipe';
 import { RecipeService } from '../../service/recipes.service';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-create',
@@ -90,19 +92,26 @@ export class RecipeCreateComponent {
     });
   }
 
-  async onSubmit(): Promise<void> {
+  onSubmit(): void {
     if (this.recipeForm.invalid) {
       return;
     }
 
     const newRecipe: Recipe = this.recipeForm.value;
-    console.log(this.recipe);
 
-    try {
-      await this.recipeService.createRecipe(newRecipe);
-      this.router.navigate(['/main']);
-    } catch (error) {
-      console.error('Error creating recipe:', error);
-    }
+    this.recipeService
+      .createRecipe(newRecipe)
+      .pipe(
+        catchError((error) => {
+          console.error('Error creating recipe:', error);
+          return of(null);
+        }),
+      )
+      .subscribe((result) => {
+        if (result) {
+          console.log('Recipe created successfully:', result);
+          this.router.navigate(['/main']);
+        }
+      });
   }
 }
