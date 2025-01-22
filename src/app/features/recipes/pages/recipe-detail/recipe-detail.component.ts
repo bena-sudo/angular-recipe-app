@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, Input } from '@angular/core';
 import { Recipe } from '../../../../core/models/recipe';
 import { RecipeService } from '../../service/recipes.service';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
 import { CommonModule } from '@angular/common';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -19,15 +22,17 @@ export class RecipeDetailComponent {
   constructor(private readonly recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.getRecipeDetail();
-  }
-
-  private async getRecipeDetail(): Promise<void> {
-    try {
-      this.recipe = await this.recipeService.getRecipeById(this.recipeID);
-    } catch (error) {
-      console.error('Error when loading recipe:', error);
-    }
+    this.recipeService
+      .getRecipeById(this.recipeID)
+      .pipe(
+        catchError((error) => {
+          console.error('Error when loading recipe:', error);
+          return of(null);
+        }),
+      )
+      .subscribe((recipe) => {
+        this.recipe = recipe;
+      });
   }
 
   getIngredients(): { name: string; quantity: string }[] {

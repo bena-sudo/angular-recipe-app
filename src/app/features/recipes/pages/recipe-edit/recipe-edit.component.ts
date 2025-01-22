@@ -10,6 +10,8 @@ import { Recipe } from '../../../../core/models/recipe';
 import { RecipeService } from '../../service/recipes.service';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -47,25 +49,28 @@ export class RecipeEditComponent implements OnInit {
     }
   }
 
-  private async loadRecipe(): Promise<void> {
-    try {
-      const recipe = await this.recipeService.getRecipeById(this.recipeID);
-      this.recipe = recipe;
-      if (recipe) {
-        this.recipeForm.patchValue(recipe);
-      } else {
-        console.error('Recipe not found!');
-        this.router.navigate(['/not-found']);
-      }
-    } catch (error) {
-      console.error('Error fetching recipe:', error);
-      this.router.navigate(['/not-found']);
-    } finally {
-      this.isLoading = false;
-    }
+  private loadRecipe(): void {
+    this.recipeService
+      .getRecipeById(this.recipeID)
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching recipe:', error);
+          this.router.navigate(['/not-found']);
+          return of(null);
+        }),
+      )
+      .subscribe((recipe) => {
+        this.recipe = recipe;
+        if (recipe) {
+          this.recipeForm.patchValue(recipe);
+        } else {
+          console.error('Recipe not found!');
+        }
+        this.isLoading = false;
+      });
   }
 
-  async onSubmit(): Promise<void> {
+  onSubmit(): void {
     if (this.recipeForm.invalid) {
       return;
     }
@@ -75,12 +80,21 @@ export class RecipeEditComponent implements OnInit {
       dateModified: this.getFormattedDate(),
     };
 
-    try {
-      await this.recipeService.updateRecipe(this.recipeID, updatedRecipe);
-      this.router.navigate(['/main']);
-    } catch (error) {
-      console.error('Error updating recipe:', error);
-    }
+    this.recipeService
+      .updateRecipe(this.recipeID, updatedRecipe)
+      .pipe(
+        catchError((error) => {
+          console.error('Error updating recipe:', error);
+          return of(null);
+        }),
+      )
+      .subscribe((result) => {
+        if (result) {
+          this.router.navigate(['/main']);
+        } else {
+          console.error('Failed to update recipe.');
+        }
+      });
   }
 
   private getFormattedDate(): string {
