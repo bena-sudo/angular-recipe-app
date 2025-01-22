@@ -12,10 +12,17 @@ import { HeaderComponent } from '../../../../shared/components/header/header.com
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { RecipeButtonDeleteComponent } from '../../components/recipe-button-delete/recipe-button-delete.component';
 
 @Component({
   selector: 'app-recipe-edit',
-  imports: [RouterLink, ReactiveFormsModule, HeaderComponent, FooterComponent],
+  imports: [
+    RouterLink,
+    ReactiveFormsModule,
+    HeaderComponent,
+    FooterComponent,
+    RecipeButtonDeleteComponent,
+  ],
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css'],
 })
