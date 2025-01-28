@@ -12,16 +12,10 @@ import { FooterComponent } from '../../../../shared/components/footer/footer.com
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { SubHeaderComponent } from '../../../../shared/components/sub-header/sub-header.component';
 
 @Component({
   selector: 'app-recipe-create',
-  imports: [
-    ReactiveFormsModule,
-    FooterComponent,
-    HeaderComponent,
-    SubHeaderComponent,
-  ],
+  imports: [ReactiveFormsModule, FooterComponent, HeaderComponent],
   templateUrl: './recipe-create.component.html',
   styleUrl: './recipe-create.component.css',
 })

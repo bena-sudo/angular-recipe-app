@@ -8,6 +8,7 @@ import { RecipeCreateComponent } from './features/recipes/pages/recipe-create/re
 import { RecipeEditComponent } from './features/recipes/pages/recipe-edit/recipe-edit.component';
 import { SigninComponent } from './features/auth/pages/signin/signin.component';
 import { SignupComponent } from './features/auth/pages/signup/signup.component';
+import { supabaseSinginGuard } from './core/guards/supabase-singin.guard';
 
 // Defining the routes for the application
 export const routes: Routes = [
@@ -32,10 +33,16 @@ export const routes: Routes = [
     path: 'create',
     component: RecipeCreateComponent,
     data: { title: 'Create' },
+    canActivate: [supabaseSinginGuard],
   },
 
   // Dynamic route for editing a recipe, using 'id' as a parameter
-  { path: 'edit/:id', component: RecipeEditComponent, data: { title: 'Edit' } },
+  {
+    path: 'edit/:id',
+    component: RecipeEditComponent,
+    data: { title: 'Edit' },
+    canActivate: [supabaseSinginGuard],
+  },
 
   // Route for the login page (signin)
   { path: 'signin', component: SigninComponent, data: { title: 'Sign in' } },
