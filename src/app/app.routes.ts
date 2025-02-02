@@ -17,30 +17,37 @@ import { supabaseSinginGuard } from './core/guards/supabase-singin.guard';
 export const routes: Routes = [
   {
     path: 'home',
+    title: 'Home',
     component: HomeLayoutComponent,
     children: [{ path: '', component: RecipeHomeComponent }],
   },
   {
     path: 'recipes',
+    title: 'Recipes',
     component: MainLayoutComponent,
     children: [{ path: '', component: RecipeMainComponent }],
   },
   {
     path: 'recipe',
+    title: 'Recipe',
     component: MainLayoutComponent,
-    children: [{ path: ':id', component: RecipeDetailComponent }],
+    children: [
+      { path: ':id', title: 'Recipe', component: RecipeDetailComponent },
+    ],
   },
   {
     path: 'about',
+    title: 'About',
     component: OtherLayoutComponent,
     children: [{ path: '', component: AboutComponent }],
   },
   {
     path: 'admin',
+    title: 'Admin',
     component: OtherLayoutComponent,
     children: [
-      { path: 'create', component: RecipeCreateComponent },
-      { path: 'edit/:id', component: RecipeEditComponent },
+      { path: 'create', title: 'Create', component: RecipeCreateComponent },
+      { path: 'edit/:id', title: 'Edit', component: RecipeEditComponent },
     ],
     canActivate: [supabaseSinginGuard],
   },
@@ -48,13 +55,13 @@ export const routes: Routes = [
     path: 'auth',
     component: AuthLayoutComponent,
     children: [
-      { path: 'signin', component: SigninComponent },
-      { path: 'signup', component: SignupComponent },
+      { path: 'signin', title: 'Sign in', component: SigninComponent },
+      { path: 'signup', title: 'Sign up', component: SignupComponent },
     ],
   },
   {
     path: '**',
+    title: 'Page not found',
     component: NotFoundComponent,
-    data: { title: '404 Not Found' },
   },
 ];
