@@ -1,0 +1,83 @@
+<div class="d-flex align-items-center justify-content-center mt-5 bg-light">
+  <div class="card p-4 shadow" style="width: 100%; max-width: 400px">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div class="text-center mb-4">
+        <img
+          src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg"
+          alt="Logo"
+          width="72"
+          height="57"
+          class="mb-2"
+        />
+        <h1 class="h5 mb-3 fw-bold">Please sign up</h1>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          formControlName="email"
+          class="form-control"
+          placeholder="name@example.com"
+          aria-describedby="emailHelp"
+        />
+        @if (
+          signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched
+        ) {
+          <div class="alert alert-danger">Incorrect format.</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="Enter your password"
+        />
+      </div>
+      @if (
+        signUpForm.get('password')?.invalid &&
+        signUpForm.get('password')?.touched
+      ) {
+        <div class="alert alert-danger">Incorrect format.</div>
+      }
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirm password</label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Confirm your password"
+        />
+      </div>
+      @if (
+        signUpForm.hasError('mismatch') &&
+        signUpForm.get('confirmPassword')?.touched
+      ) {
+        <div class="alert alert-danger">Passwords do not match.</div>
+      }
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="isLoading || signUpForm.invalid"
+      >
+        {{ isLoading ? 'Loading...' : 'Sign in' }}
+      </button>
+      @if (errorMessage) {
+        <div class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <p class="mt-4 mb-0 text-center text-muted">© 2025 Company, Inc</p>
+    </form>
+  </div>
+</div>

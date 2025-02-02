@@ -1,59 +1,57 @@
 import { Routes } from '@angular/router';
-import { RecipeHomeComponent } from './features/recipes/pages/recipe-home/recipe-home.component';
-import { RecipeMainComponent } from './features/recipes/pages/recipe-main/recipe-main.component';
-import { RecipeDetailComponent } from './features/recipes/pages/recipe-detail/recipe-detail.component';
+import { RecipeHomeComponent } from './features/recipes/recipe-home/recipe-home.component';
+import { SigninComponent } from './features/auth/signin/signin.component';
+import { SignupComponent } from './features/auth/signup/signup.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { HomeLayoutComponent } from './layouts/home-layout/home-layout.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { RecipeMainComponent } from './features/recipes/recipe-main/recipe-main.component';
 import { AboutComponent } from './shared/components/about/about.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
-import { RecipeCreateComponent } from './features/recipes/pages/recipe-create/recipe-create.component';
-import { RecipeEditComponent } from './features/recipes/pages/recipe-edit/recipe-edit.component';
-import { SigninComponent } from './features/auth/pages/signin/signin.component';
-import { SignupComponent } from './features/auth/pages/signup/signup.component';
+import { OtherLayoutComponent } from './layouts/other-layout/other-layout.component';
+import { RecipeCreateComponent } from './features/recipes/recipe-create/recipe-create.component';
+import { RecipeDetailComponent } from './features/recipes/recipe-detail/recipe-detail.component';
+import { RecipeEditComponent } from './features/recipes/recipe-edit/recipe-edit.component';
 import { supabaseSinginGuard } from './core/guards/supabase-singin.guard';
 
-// Defining the routes for the application
 export const routes: Routes = [
-  // Redirect root path to 'home'
-  { path: '', redirectTo: 'home', pathMatch: 'full', data: { title: 'Home' } },
-
-  // Route for the home page of the recipe section
-  { path: 'home', component: RecipeHomeComponent, data: { title: 'Home' } },
-
-  // Route for the main recipe listing page
-  { path: 'main', component: RecipeMainComponent, data: { title: 'Recipes' } },
-
-  // Dynamic route for recipe details, using 'id' as a parameter
   {
-    path: 'recipe/:id',
-    component: RecipeDetailComponent,
-    data: { title: 'Detail' },
+    path: 'home',
+    component: HomeLayoutComponent,
+    children: [{ path: '', component: RecipeHomeComponent }],
   },
-
-  // Route for creating a new recipe
   {
-    path: 'create',
-    component: RecipeCreateComponent,
-    data: { title: 'Create' },
+    path: 'recipes',
+    component: MainLayoutComponent,
+    children: [{ path: '', component: RecipeMainComponent }],
+  },
+  {
+    path: 'recipe',
+    component: MainLayoutComponent,
+    children: [{ path: ':id', component: RecipeDetailComponent }],
+  },
+  {
+    path: 'about',
+    component: OtherLayoutComponent,
+    children: [{ path: '', component: AboutComponent }],
+  },
+  {
+    path: 'admin',
+    component: OtherLayoutComponent,
+    children: [
+      { path: 'create', component: RecipeCreateComponent },
+      { path: 'edit/:id', component: RecipeEditComponent },
+    ],
     canActivate: [supabaseSinginGuard],
   },
-
-  // Dynamic route for editing a recipe, using 'id' as a parameter
   {
-    path: 'edit/:id',
-    component: RecipeEditComponent,
-    data: { title: 'Edit' },
-    canActivate: [supabaseSinginGuard],
+    path: 'auth',
+    component: AuthLayoutComponent,
+    children: [
+      { path: 'signin', component: SigninComponent },
+      { path: 'signup', component: SignupComponent },
+    ],
   },
-
-  // Route for the login page (signin)
-  { path: 'signin', component: SigninComponent, data: { title: 'Sign in' } },
-
-  // Route for the registration page (signup)
-  { path: 'signup', component: SignupComponent, data: { title: 'Sign up' } },
-
-  // Route for the About page
-  { path: 'about', component: AboutComponent, data: { title: 'About' } },
-
-  // Catch-all route for undefined paths, showing the NotFound component
   {
     path: '**',
     component: NotFoundComponent,

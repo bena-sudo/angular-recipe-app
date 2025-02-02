@@ -1,0 +1,141 @@
+<div class="container">
+  <div class="col">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="card shadow-sm position-relative p-5 col-md-8">
+          <!-- Edit Recipe Form -->
+          <h2 class="mb-4">Edit Recipe</h2>
+          <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <label for="strMeal">Recipe Name</label>
+              <input
+                id="strMeal"
+                type="text"
+                class="form-control"
+                formControlName="strMeal"
+                placeholder="Enter the recipe name"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="strCategory">Category</label>
+              <input
+                id="strCategory"
+                type="text"
+                class="form-control"
+                formControlName="strCategory"
+                placeholder="e.g., Snack, Main Course"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="strArea">Region of Origin</label>
+              <input
+                id="strArea"
+                type="text"
+                class="form-control"
+                formControlName="strArea"
+                placeholder="e.g., Dutch, Italian"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="strInstructions">Instructions</label>
+              <textarea
+                id="strInstructions"
+                class="form-control"
+                formControlName="strInstructions"
+                placeholder="Describe the preparation steps"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="strMealThumb">Recipe Image</label>
+              <input
+                id="strMealThumb"
+                type="url"
+                class="form-control"
+                formControlName="strMealThumb"
+                placeholder="Link to the recipe image"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="strTags">Tags</label>
+              <input
+                id="strTags"
+                type="text"
+                class="form-control"
+                formControlName="strTags"
+                placeholder="Tags separated by commas"
+              />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="strYoutube">YouTube Video Link</label>
+              <input
+                id="strYoutube"
+                type="url"
+                class="form-control"
+                formControlName="strYoutube"
+                placeholder="YouTube video URL"
+              />
+            </div>
+
+            <div class="d-flex justify-content-between">
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                [disabled]="recipeForm.invalid"
+              >
+                Save Changes
+              </button>
+              <app-recipe-button-delete
+                class="w-100 mx-2"
+                [recipeID]="recipeID"
+              />
+              <a [routerLink]="['/recipes']" class="btn btn-secondary w-100"
+                >Cancel</a
+              >
+            </div>
+          </form>
+        </div>
+        <div class="card shadow-sm position-relative h-100 px-0">
+          <div class="position-relative">
+            <img
+              src="{{ recipe ? recipe.strMealThumb : 'NO IMAGE' }}"
+              class="bd-placeholder-img card-img-top"
+              alt="{{ recipe ? recipe.strMeal : 'NO NAME' }}"
+            />
+            <div
+              class="position-absolute top-0 start-0 w-100 h-100 bg-dark"
+              style="opacity: 0.5"
+            ></div>
+            <div
+              class="position-absolute top-50 start-50 text-white translate-middle fs-5 fw-bold"
+            >
+              {{ recipe ? recipe.strMeal : 'NO NAME' }}
+            </div>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              {{ recipe ? recipe.strCategory : 'NO CATEGORY' }}
+            </p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <a class="btn btn-sm btn-outline-secondary"> View </a>
+                <a type="button" class="btn btn-sm btn-outline-secondary">
+                  Edit
+                </a>
+              </div>
+              <small class="text-body-secondary">{{
+                recipe ? recipe.dateModified : 'NO DATE'
+              }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
