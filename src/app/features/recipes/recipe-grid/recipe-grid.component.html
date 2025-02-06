@@ -1,0 +1,26 @@
+@if (recipes.length > 0) {
+  <div class="col">
+    <div class="album py-5 bg-body-tertiary">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <!-- Iterates over the recipes array and displays a recipe card for each item -->
+          @for (recipe of recipes; track $index) {
+            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="my-auto p-5" id="content">
+    <!-- Centered text for 404 error message -->
+    <div class="text-center py-5">
+      <!-- Main error code -->
+      <h4>
+        Sorry we couldn't find any results. Please try updating your search
+        term.
+      </h4>
+      <!-- Error description -->
+    </div>
+  </div>
+}

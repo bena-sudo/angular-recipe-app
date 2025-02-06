@@ -1,0 +1,57 @@
+<div class="d-flex h-100 text-center text-bg-dark vh-100">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto px-5">
+      <div>
+        <h3 class="float-md-start mb-0">Recipes</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a
+            class="nav-link fw-bold py-1 px-0 mx-2 text-white border-bottom border-5 border-white"
+            aria-current="page"
+            href="#"
+            >Home</a
+          >
+          <a
+            class="nav-link fw-bold py-1 px-0 mx-2 text-white-50"
+            [routerLink]="['/recipes']"
+            >Recipes</a
+          >
+          <a
+            class="nav-link fw-bold py-1 px-0 mx-2 text-white-50"
+            [routerLink]="['/about']"
+            >About</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <div class="px-3 d-flex flex-column align-items-center">
+      <h1>Discover Delicious Recipes</h1>
+      <p class="lead px-5 w-50">
+        Welcome to your ultimate destination for culinary inspiration. Explore a
+        wide variety of recipes, from quick meals to gourmet delights. Start
+        your cooking journey today and create unforgettable dishes for every
+        occasion.
+      </p>
+      <p class="lead">
+        <a
+          routerLink="/recipes"
+          class="btn btn-lg btn-light fw-bold border-white bg-white"
+          >Start Exploring</a
+        >
+      </p>
+    </div>
+
+    <footer class="mt-auto text-white-50">
+      <p>
+        Cover template for
+        <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by
+        <a href="https://twitter.com/mdo" class="text-white">&#64;mdo</a>.
+      </p>
+    </footer>
+  </div>
+  <script
+    src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+</div>
