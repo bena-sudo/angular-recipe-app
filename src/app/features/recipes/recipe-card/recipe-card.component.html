@@ -32,13 +32,15 @@
         >
           View
         </a>
-        <!-- Link to edit the recipe -->
-        <a
-          [routerLink]="['/edit', recipe?.idMeal]"
-          class="btn btn-sm btn-outline-secondary"
-        >
-          Edit
-        </a>
+        @if (logged) {
+          <!-- Link to edit the recipe -->
+          <a
+            [routerLink]="['/admin/edit', recipe?.idMeal]"
+            class="btn btn-sm btn-outline-secondary"
+          >
+            Edit
+          </a>
+        }
       </div>
       <!-- Display the date the recipe was modified or a fallback -->
       <small class="text-body-secondary">

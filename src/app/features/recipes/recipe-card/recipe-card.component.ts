@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../../../core/models/recipe';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { SupabaseService } from '../../../core/services/supabase.service';
 
 /**
  * RecipeCardComponent
@@ -14,7 +15,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './recipe-card.component.html',
   styleUrl: './recipe-card.component.css',
 })
-export class RecipeCardComponent {
+export class RecipeCardComponent implements OnInit {
   /**
    * Recipe data to display in the card.
    * Provided by the parent component via property binding.
@@ -22,4 +23,19 @@ export class RecipeCardComponent {
    * @type {Recipe | undefined}
    */
   @Input({ required: true }) recipe?: Recipe;
+
+  logged: boolean = false;
+
+  constructor(
+    private readonly router: Router,
+    private readonly supabaseService: SupabaseService,
+  ) {}
+
+  ngOnInit(): void {
+    this.logged = this.supabaseService.loggedSubject.getValue();
+    this.supabaseService.loggedSubject.subscribe(
+      (logged) => (this.logged = logged),
+    );
+    this.supabaseService.isLogged();
+  }
 }

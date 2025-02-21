@@ -16,7 +16,7 @@ import { supabaseSinginGuard } from './core/guards/supabase-singin.guard';
 
 export const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     title: 'Home',
     component: HomeLayoutComponent,
     children: [{ path: '', component: RecipeHomeComponent }],
