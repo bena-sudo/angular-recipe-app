@@ -62,7 +62,7 @@ export class SignupComponent {
         if (response.error) {
           this.errorMessage = response.error.message;
         } else {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         }
       })
       .catch((error) => {
